@@ -33,7 +33,7 @@ library(ggplot2)
 (standard_errors <- samp_results$samp_sd_runtime/sqrt(100))
 
 #step seven
-##comparison of sample mean to pop mean & sample SE to pop SD
+
 #step eight
 library(mosaic)
 reps <- 1000
@@ -59,7 +59,7 @@ samp_dist <- samp_dist_df |>
     facet_wrap(~ Decade))
 detach(d)
 #step ten 
-##comparison of sample SE, pop SD, and sample dist SE
+
 #### challenge 2
 #step one
 z <- read_csv("https://raw.githubusercontent.com/difiore/ada-datasets/main/zombies.csv", col_names = TRUE)
@@ -77,17 +77,17 @@ attach(z)
 #step three
 install.packages("ggpubr")
 library(ggpubr)
-ph <- ggplot(z, aes(x = height)) + 
-    geom_histogram(color="lightblue", fill = "steelblue")+
+ph <- ggplot(z, aes(y = height)) + 
+    geom_boxplot(color="lightblue", fill = "steelblue")+
     facet_wrap(~ gender)
-pw <- ggplot(z, aes(x = weight)) + 
-  geom_histogram(color="lightblue", fill = "steelblue")+
+pw <- ggplot(z, aes(y = weight)) + 
+  geom_boxplot(color="lightblue", fill = "steelblue")+
   facet_wrap(~ gender)
-pz <- ggplot(z, aes(x = zombies_killed)) + 
-  geom_histogram(color="lightblue", fill = "steelblue")+
+pz <- ggplot(z, aes(y = zombies_killed)) + 
+  geom_boxplot(color="lightblue", fill = "steelblue")+
   facet_wrap(~ gender)
-pe <- ggplot(z, aes(x = years_of_education)) + 
-  geom_histogram(color="lightblue", fill = "steelblue")+
+pe <- ggplot(z, aes(y = years_of_education)) + 
+  geom_boxplot(color="lightblue", fill = "steelblue")+
   facet_wrap(~ gender)
 (stepthree <- ggarrange(ph, pw, pz, pe,
                     labels = NA,
