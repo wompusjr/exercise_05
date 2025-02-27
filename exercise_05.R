@@ -206,10 +206,10 @@ qqnorm(samp_dist_z$samp_mean_ed, main = "Years of Education - QQ")+
   qqline(z$samp_dist_z$samp_mean_ed, col = "gray")
 par(mfrow = c(2, 2))
 #step nine
-(s_ci_height <- quantile(samp_dist_z$samp_mean_height,probs = c(0.025, 0.0975)))
-(s_ci_weight <- quantile(samp_dist_z$samp_mean_weight,probs = c(0.025, 0.0975)))
-(s_ci_zkilled <- quantile(samp_dist_z$samp_mean_zkilled,probs = c(0.025, 0.0975)))
-(s_ci_ed <- quantile(samp_dist_z$samp_mean_ed,probs = c(0.025, 0.0975)))
+(s_ci_height <- quantile(samp_dist_z$samp_mean_height,probs = c(0.025, 0.975)))
+(s_ci_weight <- quantile(samp_dist_z$samp_mean_weight,probs = c(0.025, 0.975)))
+(s_ci_zkilled <- quantile(samp_dist_z$samp_mean_zkilled,probs = c(0.025, 0.975)))
+(s_ci_ed <- quantile(samp_dist_z$samp_mean_ed,probs = c(0.025, 0.975)))
 #step ten
 n_boot <- 10000
 ##height
@@ -218,25 +218,25 @@ n_height <- length(z$height)
 for (i in 1:n_boot) {
   hboot[[i]] <- mean(sample(z$height, n_height, replace = TRUE))
 }
-(ci_hboot <- quantile(hboot, probs = c(0.025, 0.0975)))
+(ci_hboot <- quantile(hboot, probs = c(0.025, 0.975)))
 ##weight
 wboot <- vector(length = n_boot)
 n_weight <- length(z$weight)
 for (i in 1:n_boot) {
   wboot[[i]] <- mean(sample(z$weight, n_weight, replace = TRUE))
 }
-(ci_wboot <- quantile(wboot, probs = c(0.025, 0.0975)))
+(ci_wboot <- quantile(wboot, probs = c(0.025, 0.975)))
 ##zkilled
 zboot <- vector(length = n_boot)
 n_zk <- length(z$zombies_killed)
 for (i in 1:n_boot) {
   zboot[[i]] <- mean(sample(z$zombies_killed, n_zk, replace = TRUE))
 }
-(ci_zboot <- quantile(zboot, probs = c(0.025, 0.0975)))
+(ci_zboot <- quantile(zboot, probs = c(0.025, 0.975)))
 ##ed
 edboot <- vector(length = n_boot)
 n_ed <- length(z$years_of_education)
 for (i in 1:n_boot) {
   edboot[[i]] <- mean(sample(z$years_of_education, n_ed, replace = TRUE))
 }
-(ci_edboot <- quantile(edboot, probs = c(0.025, 0.0975)))
+(ci_edboot <- quantile(edboot, probs = c(0.025, 0.975)))
